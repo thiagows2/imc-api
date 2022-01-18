@@ -15,12 +15,12 @@ ActiveRecord::Schema.define(version: 2022_01_18_205441) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "imc", force: :cascade do |t|
+  create_table "imcs", force: :cascade do |t|
     t.decimal "height", default: "0.0", null: false
     t.decimal "weight", default: "0.0", null: false
     t.decimal "imc", default: "0.0", null: false
     t.string "classification"
-    t.string "obesity"
+    t.string "obesity", default: "Não obeso"
   end
 
 end

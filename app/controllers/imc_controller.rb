@@ -2,9 +2,9 @@ class ImcController < ApplicationController
   before_action :set_imc, only: [:show, :update, :destroy]
 
   def index
-    @imc = Imc.all
+    @imcs = Imc.all
 
-    render json: @imc
+    render json: @imcs
   end
 
   def show
