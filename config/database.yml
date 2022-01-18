@@ -17,9 +17,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: db
+  username: postgres
+  password: password
+  pool: 5
 
 development:
   <<: *default
@@ -44,7 +45,7 @@ development:
   #port: 5432
 
   # Schema search path. The server defaults to $user,public
-  #schema_search_path: myapp,sharedapp,public
+  #schema_search_path: imc_api,sharedapp,public
 
   # Minimum log levels, in increasing order:
   #   debug5, debug4, debug3, debug2, debug1,
@@ -78,8 +79,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: imc_api_production
-  username: imc_api
-  password: <%= ENV['IMC_API_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: imc_api_production
+#   username: imc_api
+#   password: <%= ENV['imc_api_DATABASE_PASSWORD'] %>
