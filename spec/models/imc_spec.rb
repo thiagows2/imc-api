@@ -10,60 +10,68 @@ RSpec.describe Imc, type: :model do
   end
 
   describe '#imc_calculator' do
-    context 'with default calculation' do
-      imc_spec = Imc.create!(height: 1.7, weight: 76)
+    context 'with a valid params' do
+      let(:imc_spec) { create(:imc, height: 1.7, weight: 76) }
 
-      it { expect(imc_spec.imc).to eq(26.3) }
-      it { expect(imc_spec.classification).to eq('Sobrepeso') }
-      it { expect(imc_spec.obesity).to eq('I') }
-    end
+      it 'default calculation' do
+        expect(imc_spec.imc).to eq(26.3)
+        expect(imc_spec.classification).to eq('Sobrepeso')
+        expect(imc_spec.obesity).to eq('I')
+      end
 
-    context 'with severely underweight' do
-      imc_spec = Imc.create!(height: 1.7, weight: 40)
+      it 'severely underweight' do
+        imc_spec.update_column(:weight, 40)
+        imc_spec.save
 
-      it { expect(imc_spec.imc).to eq(13.9) }
-      it { expect(imc_spec.classification).to eq('Peso severamente abaixo do normal') }
-      it { expect(imc_spec.obesity).to eq('Não obeso') }
-    end
+        expect(imc_spec.imc).to eq(13.9)
+        expect(imc_spec.classification).to eq('Peso severamente abaixo do normal')
+        expect(imc_spec.obesity).to eq('Não obeso')
+      end
 
-    context 'with underweight' do
-      imc_spec = Imc.create!(height: 1.7, weight: 50)
+      it 'underweight' do
+        imc_spec.update_column(:weight, 50)
+        imc_spec.save
 
-      it { expect(imc_spec.imc).to eq(17.4) }
-      it { expect(imc_spec.classification).to eq('Peso abaixo do normal') }
-      it { expect(imc_spec.obesity).to eq('Não obeso') }
-    end
+        expect(imc_spec.imc).to eq(17.4)
+        expect(imc_spec.classification).to eq('Peso abaixo do normal')
+        expect(imc_spec.obesity).to eq('Não obeso')
+      end
 
-    context 'with normal weight' do
-      imc_spec = Imc.create!(height: 1.7, weight: 60)
+      it 'normal weight' do
+        imc_spec.update_column(:weight, 60)
+        imc_spec.save
 
-      it { expect(imc_spec.imc).to eq(20.8) }
-      it { expect(imc_spec.classification).to eq('Normal') }
-      it { expect(imc_spec.obesity).to eq('Não obeso') }
-    end
+        expect(imc_spec.imc).to eq(20.8)
+        expect(imc_spec.classification).to eq('Normal')
+        expect(imc_spec.obesity).to eq('Não obeso')
+      end
 
-    context 'with overweight I' do
-      imc_spec = Imc.create!(height: 1.7, weight: 80)
+      it 'overweight I' do
+        imc_spec.update_column(:weight, 80)
+        imc_spec.save
 
-      it { expect(imc_spec.imc).to eq(27.7) }
-      it { expect(imc_spec.classification).to eq('Sobrepeso') }
-      it { expect(imc_spec.obesity).to eq('I') }
-    end
+        expect(imc_spec.imc).to eq(27.7)
+        expect(imc_spec.classification).to eq('Sobrepeso')
+        expect(imc_spec.obesity).to eq('I')
+      end
 
-    context 'with overweight grade II' do
-      imc_spec = Imc.create!(height: 1.7, weight: 100)
+      it 'overweight grade II' do
+        imc_spec.update_column(:weight, 100)
+        imc_spec.save
 
-      it { expect(imc_spec.imc).to eq(34.7) }
-      it { expect(imc_spec.classification).to eq('Sobrepeso') }
-      it { expect(imc_spec.obesity).to eq('II') }
-    end
+        expect(imc_spec.imc).to eq(34.7)
+        expect(imc_spec.classification).to eq('Sobrepeso')
+        expect(imc_spec.obesity).to eq('II')
+      end
 
-    context 'with overweight grade III' do
-      imc_spec = Imc.create!(height: 1.7, weight: 200)
+      it 'overweight grade III' do
+        imc_spec.update_column(:weight, 200)
+        imc_spec.save
 
-      it { expect(imc_spec.imc).to eq(69.3) }
-      it { expect(imc_spec.classification).to eq('Sobrepeso') }
-      it { expect(imc_spec.obesity).to eq('III') }
+        expect(imc_spec.imc).to eq(69.3)
+        expect(imc_spec.classification).to eq('Sobrepeso')
+        expect(imc_spec.obesity).to eq('III')
+      end
     end
   end
 end

@@ -15,8 +15,8 @@ class Imc < ApplicationRecord
   def define_classification
     self.classification =
       case imc
-      when 0..16.5 then 'Peso severamente abaixo do normal'
-      when 16.5..18.5 then 'Peso abaixo do normal'
+      when 0..16.49 then 'Peso severamente abaixo do normal'
+      when 16.5..18.49 then 'Peso abaixo do normal'
       when 18.5..24.99 then 'Normal'
       when 25..29.99 then 'Sobrepeso'
       when 30..34.99 then 'Sobrepeso'
