@@ -1,5 +1,8 @@
 class ImcController < ApplicationController
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+
   before_action :set_imc, only: [:show, :update, :destroy]
+  before_action :require_token
 
   def index
     @imcs = Imc.all
@@ -41,5 +44,11 @@ class ImcController < ApplicationController
 
   def imc_params
     params.require(:imc).permit(:height, :weight)
+  end
+
+  def require_token
+    authenticate_or_request_with_http_token do |token, options|
+      Jwt.exists?(access_token: token)
+    end
   end
 end

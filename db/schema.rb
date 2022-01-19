@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_205441) do
+ActiveRecord::Schema.define(version: 2022_01_19_201550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,13 @@ ActiveRecord::Schema.define(version: 2022_01_18_205441) do
     t.decimal "weight", default: "0.0", null: false
     t.decimal "imc", default: "0.0", null: false
     t.string "classification"
-    t.string "obesity", default: "Não obeso"
+    t.string "obesity"
+  end
+
+  create_table "jwts", force: :cascade do |t|
+    t.string "access_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

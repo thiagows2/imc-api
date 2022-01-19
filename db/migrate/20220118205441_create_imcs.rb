@@ -1,4 +1,4 @@
-class CreateImc < ActiveRecord::Migration[5.2]
+class CreateImcs < ActiveRecord::Migration[5.2]
   def change
     create_table :imcs do |t|
       t.decimal :height, null: false, default: 0
