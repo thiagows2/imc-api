@@ -86,11 +86,11 @@ GEM
     mini_portile2 (2.7.1)
     minitest (5.15.0)
     msgpack (1.4.2)
+    mysql2 (0.5.4)
     nio4r (2.5.8)
     nokogiri (1.13.1)
       mini_portile2 (~> 2.7.0)
       racc (~> 1.4)
-    pg (1.2.3)
     puma (3.12.6)
     racc (1.6.0)
     rack (2.2.3)
@@ -173,7 +173,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   listen (>= 3.0.5, < 3.2)
-  pg (>= 0.18, < 2.0)
+  mysql2
   puma (~> 3.11)
   rails (~> 5.2.6)
   rspec-rails
@@ -186,4 +186,4 @@ RUBY VERSION
    ruby 2.6.8p205
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
