@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-ruby '2.6.8'
+ruby '3.0.4'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'mysql2'
 gem 'puma', '~> 3.11'
-gem 'rails', '~> 5.2.6'
+gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -21,5 +21,4 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-gem 'active_model_serializers', '~> 0.10.13'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
