@@ -4,7 +4,7 @@ ruby '3.0.4'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'mysql2'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 6.4'
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 
 group :development, :test do
